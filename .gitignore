@@ -27,3 +27,7 @@
 *.exe
 *.out
 *.app
+
+Debug
+LAB5_OOP/Debug
+LAB5_OOP/test.txt
