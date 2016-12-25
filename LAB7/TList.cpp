@@ -142,7 +142,6 @@ bool TList<T>::Delete(int num){
 	else
 		head = head->next;
 	iter->next->prev = iter->prev;
-	//delete iter;
 	iter = 0;
 	size--;
 	return true;
@@ -156,7 +155,6 @@ bool TList<T>::Delete(TIterator<TItemList<T>, T> it) {
 	else
 		head = head->next;
 	iter->next->prev = iter->prev;
-	//delete iter;
 	iter = 0;
 	size--;
 	return true;

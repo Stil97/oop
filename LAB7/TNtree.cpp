@@ -1,7 +1,7 @@
 #include "TNtree.h"
 
 template <class T,class TT> TNtree<T,TT>::TNtree() : root(0) {
-	arrLevelWidth = (int*)malloc(sizeof(int)* 2);
+	arrLevelWidth = (int*)malloc(sizeof(int)* 1);
 	numLevel = 0;
 	arrLevelWidth[0] = 0;
 };
@@ -146,6 +146,28 @@ void TNtree<T,TT>::DeleteItem(TIterator<TNtreeItem<T>, T> it) {
 		son->brother = 0;
 	deletedItem = 0;
 	iter = 0;
+	LevelRest();
+}
+
+template <class T, class TT>
+void TNtree<T, TT>::LevelRest() {
+	auto iter = root;
+	numLevel = 0;
+	free(arrLevelWidth);
+	arrLevelWidth = (int*)malloc(sizeof(int)* 1);
+	if (!iter)
+		arrLevelWidth[0] = 0;
+	while (iter) {
+		numLevel++;
+		arrLevelWidth = (int*)realloc(arrLevelWidth, sizeof(int) * numLevel);
+		auto iter2 = iter;
+		int i ;
+		for (i = 0; iter2 != nullptr; i++)
+			iter2 = iter2->brother;
+		arrLevelWidth[numLevel - 1] = i;
+		iter = iter->child;
+	}
+
 }
 
 template <class T,class TT>

@@ -34,6 +34,7 @@ private:
 	void PushNode(std::shared_ptr<T>& val);
 	std::shared_ptr<TNtreeItem<T>> NewTNtreeItem(std::shared_ptr<T>& list);
 	std::shared_ptr<TNtreeItem<T>> SearchInsert(std::shared_ptr<TNtreeItem<T>>);
+	void LevelRest();
 	
 	std::shared_ptr<TNtreeItem<T>> root;
 
